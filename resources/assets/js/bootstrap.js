@@ -25,3 +25,5 @@ window.swal = SweetAlert;
 window.axios.defaults.headers.common = {
     'X-Requested-With': 'XMLHttpRequest'
 };
+
+

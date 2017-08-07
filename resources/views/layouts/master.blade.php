@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel-Vue</title>
+    <title>OTA Admin</title>
 
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 </head>
@@ -15,25 +15,25 @@
 
         @component('components.jumbotron')
             @slot('title')
-                Laravel 5.4 and Vue.js 2
+                OTA Admin
             @endslot
             @slot('description')
-                The Single page Application is test and implemented by Laravel 5.4 and Vue.js 2.
+               OTA cloud 平台.
             @endslot
         @endcomponent
 
         <ul class="nav nav-tabs">
             <router-link to="/" tag="li" exact>
-                <a href="">Home</a>
+                <a href="">主页</a>
             </router-link>
             <router-link to="/about" tag="li">
-                <a href="">About</a>
+                <a href="">关于</a>
             </router-link>
             <router-link to="/contact" tag="li">
-                <a href="">Contact</a>
+                <a href="">联系</a>
             </router-link>
             <router-link to="/notes" tag="li">
-                <a href="#">Notes</a>
+                <a href="#">留言</a>
             </router-link>
         </ul>
 
@@ -49,5 +49,7 @@
     </footer>
 
     <script src="{{ mix('js/app.js') }}"></script>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/vue-i18n/dist/vue-i18n.js"></script>
 </body>
 </html>

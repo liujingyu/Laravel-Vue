@@ -36,8 +36,16 @@
                 <a href="#">留言</a>
             </router-link>
         </ul>
-
         <router-view></router-view>
+            <!-- Button trigger modal -->
+            <a href="#" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">登录</a>
+            <modal>
+                <h3 slot="title">登录</h3>
+                <p slot="body">
+                    <login @updateNotes="getUpdatedNotes"></login>
+                </p>
+            </modal>
+
 
     </div>
 

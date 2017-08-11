@@ -6,7 +6,6 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laravel\Passport\HasApiTokens;
 
-
 class User extends Authenticatable
 {
     use Notifiable;
@@ -38,5 +37,9 @@ class User extends Authenticatable
     public function notes()
     {
         return $this->hasMany(Note::class);
+    }
+
+    public function findForPassport($username) {
+        return $this->where('name', $username)->first();
     }
 }

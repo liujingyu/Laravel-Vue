@@ -1,5 +1,6 @@
 <?php
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,31 +15,34 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::resource('note', 'NoteController');
 
-Route::get('/redirect', function () {
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/abc', function () {
+
     $query = http_build_query([
-        'client_id' => '4',
-        'redirect_uri' => 'http://localhost:8000/callback',
+        'client_id' => '6',
+        'redirect_uri' => 'http://localhost:8000/v',
         'response_type' => 'code',
-        'scope' => '',
+        'scope' => 'conference'
     ]);
 
     return redirect('http://localhost:8000/oauth/authorize?'.$query);
 });
 
-Route::get('/callback', function (Request $request) {
-    $http = new GuzzleHttp\Client;
+Route::get('/v', function (Illuminate\Http\Request $request) {
+    $http = new \GuzzleHttp\Client;
 
     $response = $http->post('http://localhost:8000/oauth/token', [
         'form_params' => [
+            'client_id' => '6',
+            'client_secret' => 'qkLVnGetG3yozpv9WI5t5VFjRwxN0kwGttjr798S',
             'grant_type' => 'authorization_code',
-            'client_id' => 'client-id',
-            'client_secret' => 'client-secret',
-            'redirect_uri' => 'http://localhost:8000/callback',
+            'redirect_uri' => 'http://localhost:8000/v',
             'code' => $request->code,
         ],
     ]);
-
-    return json_decode((string) $response->getBody(), true);
+    return json_decode((string) $response->getBody(), true)['access_token'];
 });

@@ -35,9 +35,6 @@
             <router-link to="/notes" tag="li">
                 <a href="#">留言</a>
             </router-link>
-            <router-link to="/login" tag="li">
-                <a href="#">登录</a>
-            </router-link>
         </ul>
         <router-view></router-view>
 
